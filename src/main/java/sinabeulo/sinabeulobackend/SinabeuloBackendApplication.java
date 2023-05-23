@@ -10,4 +10,5 @@ public class SinabeuloBackendApplication {
 		SpringApplication.run(SinabeuloBackendApplication.class, args);
 	}
 
+
 }

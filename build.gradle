@@ -17,13 +17,25 @@ repositories {
 dependencies {
     api 'org.springframework.boot:spring-boot-starter-thymeleaf:2.7.12'
     api 'org.springframework.boot:spring-boot-starter-web:2.7.12'
+    implementation 'org.projectlombok:lombok:1.18.26'
     testImplementation 'org.springframework.boot:spring-boot-starter-test:2.7.12'
+    implementation 'org.springframework.boot:spring-boot:3.0.0'
+
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
+
+//    // Querydsl 설정
+//    implementation 'com.querydsl:querydsl-jpa:5.0.0:jakarta'
+//    annotationProcessor "com.querydsl:querydsl-apt:${dependencyManagement.importedProperties['querydsl.version']}:jakarta"
+//    annotationProcessor "jakarta.annotation:jakarta.annotation-api"
+//    annotationProcessor "jakarta.persistence:jakarta.persistence-api"s
+//    //= Querydsl 설정
 }
 
 group = 'sinabeulo'
 version = '0.0.1-SNAPSHOT'
 description = 'sinabeulo-backend'
-java.sourceCompatibility = JavaVersion.VERSION_1_8
+java.sourceCompatibility = '17'
 
 publishing {
     publications {
