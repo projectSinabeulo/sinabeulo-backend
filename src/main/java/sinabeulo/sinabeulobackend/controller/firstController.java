@@ -14,16 +14,6 @@ public class firstController {
 
     private final firstService firstService;
 
-//    @Autowired
-//    public void firstServiceImpl() {
-//        firstServiceImpl(null);
-//    }
-
-//    @Autowired
-//    public void firstServiceImpl(firstService firstService) {
-//        this.firstService = firstService;
-//    }
-
     @GetMapping("/first")
     public Map<String, Object> firstController() {
         return firstService.getFirstData();

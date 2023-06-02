@@ -15,14 +15,19 @@ repositories {
 }
 
 dependencies {
-    api 'org.springframework.boot:spring-boot-starter-thymeleaf:2.7.12'
-    api 'org.springframework.boot:spring-boot-starter-web:2.7.12'
-    implementation 'org.projectlombok:lombok:1.18.26'
-    testImplementation 'org.springframework.boot:spring-boot-starter-test:2.7.12'
+    api 'org.springframework.boot:spring-boot-starter-thymeleaf:3.0.0'
+    api 'org.springframework.boot:spring-boot-starter-web:3.0.0'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test:3.0.0'
     implementation 'org.springframework.boot:spring-boot:3.0.0'
 
+    implementation 'org.projectlombok:lombok:1.18.26'
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
+    testCompileOnly 'org.projectlombok:lombok:1.18.22'
+    testAnnotationProcessor 'org.projectlombok:lombok:1.18.22'
+
+
+    implementation 'org.jsoup:jsoup:1.14.2'
 
 //    // Querydsl 설정
 //    implementation 'com.querydsl:querydsl-jpa:5.0.0:jakarta'
