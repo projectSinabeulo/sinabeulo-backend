@@ -35,11 +35,18 @@
 				<type>pom</type>
 				<scope>import</scope>
 			</dependency>
+
 		</dependencies>
 	</dependencyManagement>
 
+
 	<dependencies>
 		<!--	google-->
+		<dependency>
+			<groupId>com.google.cloud</groupId>
+			<artifactId>google-cloud-texttospeech</artifactId>
+<!--			<version>2.19.0</version>-->
+		</dependency>
 		<dependency>
 			<groupId>com.google.cloud</groupId>
 			<artifactId>google-cloud-speech</artifactId>
@@ -71,6 +78,8 @@
 <!--			<groupId>org.hibernate</groupId>-->
 <!--			<artifactId>hibernate-core</artifactId>-->
 <!--		</dependency>-->
+
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-thymeleaf</artifactId>

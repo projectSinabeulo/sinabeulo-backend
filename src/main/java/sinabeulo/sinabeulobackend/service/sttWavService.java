@@ -48,7 +48,6 @@ public class sttWavService {
                 SpeechRecognitionAlternative alternative = result.getAlternativesList().get(0);
                 stttext = alternative.getTranscript();
                 System.out.printf("Transcription: %s%n", stttext);
-
             }
 
         } catch (IOException e) {
@@ -56,7 +55,6 @@ public class sttWavService {
         }
 
         return stttext;
-
     }
 
 
@@ -91,7 +89,6 @@ public class sttWavService {
                 SpeechRecognitionAlternative alternative = result.getAlternativesList().get(0);
                 stttext = alternative.getTranscript();
                 System.out.printf("Transcription: %s%n", stttext);
-
             }
 
         } catch (IOException e) {

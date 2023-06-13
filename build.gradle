@@ -13,6 +13,7 @@ repositories {
         url = uri('https://repo.maven.apache.org/maven2/')
     }
     google()
+
 }
 
 dependencies {
@@ -28,8 +29,10 @@ dependencies {
     testAnnotationProcessor 'org.projectlombok:lombok:1.18.22'
 
 
-    implementation 'com.google.cloud:google-cloud-speech:4.13.0'
-    compileOnly 'com.google.cloud:google-cloud-speech:4.13.0'
+    implementation 'com.google.cloud:google-cloud-speech:1.24.8'
+    compileOnly 'com.google.cloud:google-cloud-speech:1.24.8'
+
+    implementation 'com.google.cloud:google-cloud-texttospeech:1.2.5'
 
     implementation 'org.jsoup:jsoup:1.14.2'
 

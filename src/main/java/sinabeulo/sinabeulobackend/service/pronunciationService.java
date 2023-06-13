@@ -12,7 +12,7 @@ import java.net.*;
 import static java.net.URLEncoder.encode;
 
 @Service
-public class secondService {
+public class pronunciationService {
 
 
     public String trans(String word) throws IOException, URISyntaxException {

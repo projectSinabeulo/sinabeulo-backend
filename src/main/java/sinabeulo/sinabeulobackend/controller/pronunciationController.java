@@ -3,21 +3,20 @@ package sinabeulo.sinabeulobackend.controller;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import sinabeulo.sinabeulobackend.model.dto.WordDto;
-import sinabeulo.sinabeulobackend.service.secondService;
+import sinabeulo.sinabeulobackend.service.pronunciationService;
 
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
 import java.net.URISyntaxException;
 
 @RestController
 @RequiredArgsConstructor
-public class secondController {
+public class pronunciationController {
 
-    private final secondService secondService;
+    private final pronunciationService pronunciationService;
 
-    @PostMapping("/second")
+    @PostMapping("/pronunn")
     public String postInfo(@RequestBody WordDto wordDto) throws IOException, URISyntaxException {
-        String result = secondService.trans(wordDto.getWord());
+        String result = pronunciationService.trans(wordDto.getWord());
         return result;
 
 //        return name + "hello!";
