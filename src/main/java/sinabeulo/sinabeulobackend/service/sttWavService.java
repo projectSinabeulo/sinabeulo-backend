@@ -74,8 +74,8 @@ public class sttWavService {
             // Builds the sync recognize request
             RecognitionConfig config =
                     RecognitionConfig.newBuilder()
-                            .setEncoding(RecognitionConfig.AudioEncoding.LINEAR16)
-                            .setSampleRateHertz(48000)      //wav파일 44100 //영현이네 wav은 48000
+//                            .setEncoding(RecognitionConfig.AudioEncoding.LINEAR16)
+//                            .setSampleRateHertz(48000)      //wav파일 44100 //영현이네 wav은 48000
                             .setLanguageCode("ko-KR")
                             .build();
 
