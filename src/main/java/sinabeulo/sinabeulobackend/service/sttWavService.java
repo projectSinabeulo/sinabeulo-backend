@@ -34,7 +34,7 @@ public class sttWavService {
             RecognitionConfig config =
                     RecognitionConfig.newBuilder()
                             .setEncoding(RecognitionConfig.AudioEncoding.LINEAR16)
-                            .setSampleRateHertz(44100)      //wav파일 44100
+//                            .setSampleRateHertz(44100)      //wav파일 44100
                             .setLanguageCode("ko-KR")
                             .build();
 
@@ -75,7 +75,7 @@ public class sttWavService {
             RecognitionConfig config =
                     RecognitionConfig.newBuilder()
                             .setEncoding(RecognitionConfig.AudioEncoding.LINEAR16)
-                            .setSampleRateHertz(44100)      //wav파일 44100
+                            .setSampleRateHertz(24000)      //wav파일 44100 //영현이네 wav은 24000
                             .setLanguageCode("ko-KR")
                             .build();
 
@@ -92,7 +92,9 @@ public class sttWavService {
             }
 
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            String error = "error";
+            return error;
+//            throw new RuntimeException(e);
         }
 
         return stttext;
