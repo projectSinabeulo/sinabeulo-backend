@@ -14,7 +14,13 @@ import java.io.IOException;
 public class FileController {
 
     @PostMapping("/uploadFormAction")
-    public String uploadFormPost(@RequestParam(value = "file", required = false) MultipartFile file) {
+    public String uploadFormPost(@RequestBody MultipartFile file) {
+
+        //byte[]로 받기
+//        @RequestBody MultipartFile file
+
+        //Wav file로 받기
+//        @RequestParam(value = "file", required = false) MultipartFile file
 
         if (file.isEmpty()) {
             return "File is empty";
