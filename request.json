@@ -1,9 +1,5 @@
 {
-  "config": {
-      "encoding":"FLAC",
-      "languageCode": "en-US"
-  },
-  "audio": {
-      "uri":"gs://cloud-samples-tests/speech/brooklyn.flac"
-  }
+  "q": "hello",
+  "source": "en",
+  "target": "es"
 }

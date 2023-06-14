@@ -27,7 +27,6 @@ public class FileController {
             // Your code here
             String stttext = sttWavService.sttWav2(fileData);
 
-
             return stttext;
         } catch (IOException e) {
             return "Error uploading file: " + e.getMessage();
