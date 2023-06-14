@@ -30,6 +30,7 @@ public class FileController {
             // Process the file (e.g., save it to a location or perform operations)
             // For example, you can save the file using file.getBytes() or perform any required processing
             byte[] fileData = file.getBytes();
+            System.out.print(fileData);
             // Your code here
             String stttext = sttWavService.sttWav2(fileData);
 
