@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "project-sinabeulo",
+  "private_key_id": "9a57d7edf9050bf187f4400b25ebb98ad5faaeb8",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQC1ZHMEg90tqA14\ndsIZa/npPFBQ+YO02IQqdvv2hcJyLAcmlQO58LCwssEZEQkRSyErjSgCtO3QUKxn\nyytFkH+JvKDk0YmtzU1K4bsRN/OQKPihirt2tEY4wqefQFizZttY+x2f9DUnUjxy\ndo8FD4icBthF0QRI3Z4Woce1479qJsEfJYxa9oBEyGp+PQAP84xBGTwD3klx5MbZ\nNyZqWWA9v9/2/HPF/gj3QFjPVyqvxNvY4853BUTruhzLBCDUti60i7ATRID2h20l\nEg4Ddx9XyMFMCpaFy82N7Fy6EvYJisz1RiHC0DKMjrGwCHLDsGDJK+jl7NdMsCSX\nV+brqXHTAgMBAAECggEAEhZlHbMkb/QM+9Ejw7MvpWE9RQXMa1EXxMA+mbN20zmu\nsNs1Fup4Q/ZfKOe49r9+HECkF7kA6b/RoTvyIaqp/QsRJB/80ZbiOTBPHgVtRRfA\nyyLxVIHfarOGUWvyLFl6T+IibxvD3RrnKibGViPZZG2OTU/tVHK829bf+jQulyAA\n/dhK7s/e58zq0hyindxGhAh6GlQ9gLB2fw+V3ziWINUXtGaQDEVKn79egGY3aXyu\ncMYpDofTRNYAHBN2u6Lc4yq/SWc+VsdQcSCVU6zFI5P/kStB7s0PHARntnfKNMcS\nGBNiM4MvMnRJeLI9h0bvgrSq+7aEuv2eirjQ9GnVcQKBgQDth7I1BRXuCOraQ3/O\nbWnEMHXMXBj1n71aGdaz6hqASQxpnsxacaurkfEebe0NQtu8nge20ghPIwLK3+D+\nWZ7d4inVjgb2SVeLDc4kOUjqP1yEkwjn1qs9/7V6Dd/OuHiNKs4dDcthNpQKw8d6\nvrDKnbhOC/VNIVs4XEe4y0A1qQKBgQDDf0Tt1i3BIztwOTGC3JkLZHhrCluGocae\njlP+H6AXGJNRnpKQYn1DnjCfp0+4Ikf23Pne+Ocb6c6rbWgMdhe54msovpHkikH5\nB4Q3+GbSFwHV9qw9ll6nkOWwYO1v7CYniWHz59nlDet0n+BblCj2WuxPqYdUNQh5\nXDCq9tEhGwKBgQDdfvE+IczuWGBwQgtXOo4rRalDdQpNWbUf5QJiaUZnJDcv8sXK\n/T7BUelPn+AyworXm2HEKJ1Y9mPvPM+5P2c2r2SlYLi7R28cGzaEburAjW8/rUDb\nuEGdIetfsrpmMX0w3p6vVyK1N0jbtO86VcHUXzjzhpEraJSAvQSgnN/2aQKBgGCP\nUgpvSXYl4svRVAUg1G7uFxQ3r3FWInZaMl5IXJhLySf9PMMYAmsNjVKuHxABzq2+\nA6UAJ5Z/61Z82XGeOqXTkb40MndBWsiXz9SdWpvWRU/bYMOiq+n0BZ8SoPQxHb9V\neg4wrE0YjP2zoetZyMm1qxbF01PiRec7g8ZN1omVAoGAXqMy8/5mQ1mnojQYw2f5\nDgclEozfOAVbTRjEzwNcOpIllZTH2ka+aad0dg3jwcxYIq2SNUNGq+TnMEMvWC2o\nW9/AUhDTwYdsG54EEiMmYKZIX48UCXXbzgDTUZJ7T20rzDiRmUMDqNrEU/JIiuW3\nzMTHQvK/VYm6Tb6M5HfQOeE=\n-----END PRIVATE KEY-----\n",
+  "client_email": "project-sinabeulo@project-sinabeulo.iam.gserviceaccount.com",
+  "client_id": "114660228187109514815",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/project-sinabeulo%40project-sinabeulo.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}
