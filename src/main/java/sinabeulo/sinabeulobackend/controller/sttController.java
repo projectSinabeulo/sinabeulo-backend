@@ -3,6 +3,7 @@ package sinabeulo.sinabeulobackend.controller;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import sinabeulo.sinabeulobackend.service.sttWavService;
 
 import java.io.IOException;
@@ -12,47 +13,32 @@ import java.io.IOException;
 @RequiredArgsConstructor
 public class sttController {
 
-    //sttStartService
-//    @GetMapping("stt")
-//    public String googlestt() {
-////        System.out.print("stt sample");
-//        String stttext = sttStartService.quickSample();
-//        return stttext;
-//    }
+    @PostMapping("/stt")
+    public String uploadFormPost(@RequestBody MultipartFile file) {
 
-    //sttService.sttrequest()
-//    @PostMapping("/json")
-//    ResponseEntity<?> postgooglestt(@RequestBody sttDto sttDto) throws IOException {
-//        return new ResponseEntity<>(sttService.sttrequest(sttDto), HttpStatus.OK);
-//    }
+        //byte[]로 받기
+//        @RequestBody MultipartFile file
 
-    //wav try Post
-//    @PostMapping()
-//    ResponseEntity<?> wavgooglestt(@RequestBody sttDto sttDto) throws IOException {
-//        return new ResponseEntity<>(sttService.sttrequest(sttDto), HttpStatus.OK);
-//    }
+        //Wav file로 받기
+//        @RequestParam(value = "file", required = false) MultipartFile file
 
-    //wav try Get - success!!
-    @GetMapping()
-    public String googlestt() throws IOException {
-        System.out.print("stt wav sample\n");
-        String stttext = sttWavService.sttWav1();
-//        String stttext = sttStartService.quickSample();
-        return stttext;
+        if (file.isEmpty()) {
+            return "File is empty";
+        }
+
+        try {
+            // Process the file (e.g., save it to a location or perform operations)
+            // For example, you can save the file using file.getBytes() or perform any required processing
+            byte[] fileData = file.getBytes();
+
+            // Your code here
+            String stttext = sttWavService.sttWav2(fileData);
+
+            return stttext;
+        } catch (IOException e) {
+            return "Error uploading file: " + e.getMessage();
+        }
     }
-
-//    @RequestMapping(value = "/play/audio")
-//    public void wavdownloadstt(HttpServletResponse response) {
-//        byte[] wav = audioFile; // 업로드한 wav 파일 불러와서 담기
-//        response.addHeader("Content-type", "attachment;filename=temp.wav");
-//        response.setContentType("audio/wav");
-//        response.setHeader("Content-Length", String.valueOf(wav.length));
-//        response.getOutputStream().write(wav);
-//        response.flushBuffer();
-//    }
-
-
-
 
 
 }

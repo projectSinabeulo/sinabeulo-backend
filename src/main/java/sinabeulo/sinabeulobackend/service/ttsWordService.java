@@ -25,8 +25,8 @@ public class ttsWordService {
 //                            .setLanguageCode("en-US") //for english
 //                            .setSsmlGender(SsmlVoiceGender.NEUTRAL)
                             .setLanguageCode("ko-KR")   // Set the language code for Korean
-                            .setName("ko-KR-Neural2-C") // Optional: Set the specific voice name, e.g., "ko-KR-Standard-A"
-                            .setSsmlGender(SsmlVoiceGender.MALE) // Set the desired voice gender
+//                            .setName("ko-KR-Neural2-C") // Optional: Set the specific voice name, e.g., "ko-KR-Standard-A"
+//                            .setSsmlGender(SsmlVoiceGender.MALE) // Set the desired voice gender
                             .build();
 
             // Select the type of audio file you want returned

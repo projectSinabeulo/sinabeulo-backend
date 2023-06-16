@@ -25,20 +25,20 @@ import java.io.InputStream;
 public class ttsController {
 
    // ttsStartService
-//    @GetMapping("tts")
-//    public void googletts() {
-////        System.out.print("tts quicksample");
-//        ttsStartService.quickSample1();
-//
-//    }
-
-    //ttsStartService with post word
-    @PostMapping("tts")
-    public void googlettspost(String words) {
+    @GetMapping("tts")
+    public void googletts() {
 //        System.out.print("tts quicksample");
-        ttsWordService.ttsWords(words);
+        ttsStartService.quickSample1();
 
     }
+
+    //ttsStartService with post word
+//    @PostMapping("/tts")
+//    public void googlettspost(String words) {
+////        System.out.print("tts quicksample");
+//        ttsWordService.ttsWords(words);
+//
+//    }
 
 
 
