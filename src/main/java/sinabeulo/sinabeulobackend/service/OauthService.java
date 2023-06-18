@@ -1,6 +1,7 @@
 package sinabeulo.sinabeulobackend.service;
 
 import com.fasterxml.jackson.databind.JsonNode;
+import lombok.RequiredArgsConstructor;
 import org.springframework.core.env.Environment;
 import org.springframework.http.*;
 import org.springframework.stereotype.Service;
@@ -8,32 +9,29 @@ import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
 
+import java.io.IOException;
+
 @Service
-public class googleOAuthService {
+public class OauthService {
     private static Environment env;
     private static RestTemplate restTemplate = new RestTemplate();
 
-    public googleOAuthService(Environment env) {
+    public OauthService(Environment env) {
         this.env = env;
     }
-
-    public static void socialLogin(String code, String registrationId) {
+    public void socialLogin(String code, String registrationId) {
         String accessToken = getAccessToken(code, registrationId);
         System.out.println("accessToken = " + accessToken);
     }
-//        public void socialLogin(String code, String registrationId) {
-//        System.out.println("code = " + code);
-//        System.out.println("registrationId = " + registrationId);
-//        }
 
+    private String getAccessToken(String authorizationCode, String registrationId) {
 
-    private static String getAccessToken(String authorizationCode, String registrationId) {
+//        authorizationCode = "4/0AbUR2VMv6PW0oO7h5FUEnjfp6rtm5Yz8tzyLPbXJFMzWYtw-clUqkrhzqrndLHs_U0nnTA";
+
         String clientId = env.getProperty("oauth2." + registrationId + ".client-id");
         String clientSecret = env.getProperty("oauth2." + registrationId + ".client-secret");
         String redirectUri = env.getProperty("oauth2." + registrationId + ".redirect-uri");
         String tokenUri = env.getProperty("oauth2." + registrationId + ".token-uri");
-
-        System.out.print(clientId);
 
         MultiValueMap<String, String> params = new LinkedMultiValueMap<>();
         params.add("code", authorizationCode);
@@ -52,7 +50,5 @@ public class googleOAuthService {
         ResponseEntity<JsonNode> responseNode = restTemplate.exchange(tokenUri, HttpMethod.POST, entity, JsonNode.class);
         JsonNode accessTokenNode = responseNode.getBody();
         return accessTokenNode.get("access_token").asText();
-
-
     }
 }

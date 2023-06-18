@@ -1,8 +1,11 @@
 package sinabeulo.sinabeulobackend.service;
 
+import com.google.api.gax.core.FixedCredentialsProvider;
+import com.google.auth.oauth2.GoogleCredentials;
 import com.google.cloud.speech.v1.*;
 import com.google.protobuf.ByteString;
 
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -16,7 +19,7 @@ public class sttWavService {
 //    private List<SpeechContext> speechContexts = null;
 //
 //
-//    private void addSpeechContexts(RecognitionConfig.Builder builder){
+//    private void addSpeechContext                 ㅛs(RecognitionConfig.Builder builder){
 //
 //        if (speechContexts == null)
 //        {
@@ -76,11 +79,17 @@ public class sttWavService {
 
     //wav 파일을 구성할 byte[]로 받고 stt 결과 반환
     public static String sttWav2(byte[] fileData) throws IOException {
+
+        GoogleCredentials credentials = GoogleCredentials.fromStream(new FileInputStream("project-sinabeulo-key-now.json"));
+
+
         String stttext;
 
         byte[] content = fileData;
 
-        try (SpeechClient speechClient = SpeechClient.create()) {
+        try (SpeechClient speechClient = SpeechClient.create(SpeechSettings.newBuilder()
+                .setCredentialsProvider(FixedCredentialsProvider.create(credentials))
+                .build())) {
             stttext = null;
 
             // Get the contents of the audio file
@@ -121,8 +130,6 @@ public class sttWavService {
             }
 
         } catch (IOException e) {
-//            String error = "error";
-//            return error;
             throw new RuntimeException(e);
         }
 

@@ -1,20 +1,23 @@
 package sinabeulo.sinabeulobackend.controller;
 
 
+import com.google.auth.oauth2.GoogleCredentials;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import sinabeulo.sinabeulobackend.service.sttWavService;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 
 @RestController
-@RequestMapping("/stt")
+//@RequestMapping("/stt")
 @RequiredArgsConstructor
 public class sttController {
 
     @PostMapping("/stt")
-    public String uploadFormPost(@RequestBody MultipartFile file) {
+    public String uploadFormPost(@RequestBody MultipartFile file) throws IOException {
 
         //byte[]로 받기
 //        @RequestBody MultipartFile file
