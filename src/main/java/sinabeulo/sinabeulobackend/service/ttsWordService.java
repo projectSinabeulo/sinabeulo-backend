@@ -3,75 +3,43 @@ package sinabeulo.sinabeulobackend.service;
 import com.google.cloud.texttospeech.v1.*;
 import com.google.protobuf.ByteString;
 
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.OutputStream;
+import java.io.*;
 
 public class ttsWordService {
 
-    //basic Sample
-    public static void ttsWords(String words) {
-        /** Demonstrates using the Text-to-Speech API. */
+    //google Text-to-speech api request 함수
+    public static byte[] ttsWords(String words) {
         // Instantiates a client
         try (TextToSpeechClient textToSpeechClient = TextToSpeechClient.create()) {
-            // Set the text input to be synthesized
+
+            //request를 보낼 단어에 대해 빌드
             SynthesisInput input = SynthesisInput.newBuilder().setText(words).build();
 
-            // Build the voice request, select the language code ("en-US") and the ssml voice gender
-            // ("neutral")
+            //음성 request 빌드, 언어/목소리/성별 등을 설정
             VoiceSelectionParams voice =
                     VoiceSelectionParams.newBuilder()
-//                            .setLanguageCode("en-US") //for english
-//                            .setSsmlGender(SsmlVoiceGender.NEUTRAL)
-                            .setLanguageCode("ko-KR")   // Set the language code for Korean
-//                            .setName("ko-KR-Neural2-C") // Optional: Set the specific voice name, e.g., "ko-KR-Standard-A"
-//                            .setSsmlGender(SsmlVoiceGender.MALE) // Set the desired voice gender
+                            .setLanguageCode("ko-KR")               // 한국어 설정
+                            .setName("ko-KR-Neural2-C")             // Optional: 목소리 설정
+                            .setSsmlGender(SsmlVoiceGender.MALE)    //성별 설정
                             .build();
 
-            // Select the type of audio file you want returned
+            //return 받는 audio 파일에 대한 configuration 설정
             AudioConfig audioConfig =
-                    AudioConfig.newBuilder().setAudioEncoding(AudioEncoding.MP3).build();
+                    AudioConfig.newBuilder().setAudioEncoding(AudioEncoding.LINEAR16).build();  //for return byte
 
-            // Perform the text-to-speech request on the text input with the selected voice parameters and
-            // audio file type
+            // text-to-speech request를 세팅하고 보냄, input/voice/audioConfig
             SynthesizeSpeechResponse response =
                     textToSpeechClient.synthesizeSpeech(input, voice, audioConfig);
 
-            // Get the audio contents from the response
+            //response에서 audio를 받아옴
             ByteString audioContents = response.getAudioContent();
 
-            // Write the response to the output file.
-//            try (OutputStream out = new FileOutputStream("output.mp3")) {
-//                out.write(audioContents.toByteArray());
-//                System.out.println("Audio content written to file \"output.mp3\"");
-//
-//
-//            } catch (FileNotFoundException e) {
-//                throw new RuntimeException(e);
-//            } catch (IOException e) {
-//                throw new RuntimeException(e);
-//            }
-
-            //Write response for Stream
-            // Write the response to the output file.
-            try (OutputStream out = new FileOutputStream("output.mp3")) {
-                out.write(audioContents.toByteArray());
-                System.out.println("Audio content written to file \"output.mp3\"");
-
-
-            } catch (FileNotFoundException e) {
-                throw new RuntimeException(e);
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-
+            byte[] ttsfile = audioContents.toByteArray();   //audio를 byte arrary로 변환하여 반환
+            return ttsfile;
 
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-
-
     }
 
 }

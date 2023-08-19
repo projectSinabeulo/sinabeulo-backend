@@ -1,129 +1,50 @@
 package sinabeulo.sinabeulobackend.service;
 
-import com.google.api.gax.core.FixedCredentialsProvider;
-import com.google.auth.oauth2.GoogleCredentials;
 import com.google.cloud.speech.v1.*;
 import com.google.protobuf.ByteString;
 
-import java.io.FileInputStream;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.Arrays;
+
 import java.util.List;
+import java.util.Arrays;
 
 public class sttWavService {
 
-//    private List<SpeechContext> speechContexts = null;
-//
-//
-//    private void addSpeechContext                 ㅛs(RecognitionConfig.Builder builder){
-//
-//        if (speechContexts == null)
-//        {
-//            speechContexts = new ArrayList<>();
-//            ActionServicesHandler.getInstance().getPhrases()
-//                    .stream().map(ph -> speechContexts.add(
-//                            SpeechContext.newBuilder().addPhrases( "바나너", "버내나", "버나나", "본내나", "바나냐").build()));
-//        }
-//
-//        speechContexts.stream().map(ctx -> builder.addSpeechContexts(ctx));
-//    }
-
-
-    //local 파일로 받고 stt 결과 반환
-    public static String sttWav1() throws IOException {
-        String stttext;
-
-        String fileName = "resources/test3.wav";
-//        String fileName = "resources/commercial_mono.wav";
-        Path path = Paths.get(fileName);
-        byte[] content = Files.readAllBytes(path);
-
-        try (SpeechClient speechClient = SpeechClient.create()) {
-            stttext = null;
-
-            // Get the contents of the local audio file
-            RecognitionAudio audio = RecognitionAudio.newBuilder().setContent(ByteString.copyFrom(content)).build();
-
-
-            // Builds the sync recognize request
-            RecognitionConfig config =
-                    RecognitionConfig.newBuilder()
-                            .setEncoding(RecognitionConfig.AudioEncoding.LINEAR16)
-                            .setSampleRateHertz(48000)      //wav파일 44100
-                            .setLanguageCode("ko-KR")
-                            .build();
-
-            // Performs speech recognition on the audio file
-            RecognizeResponse response = speechClient.recognize(config, audio);
-            List<SpeechRecognitionResult> results = response.getResultsList();
-
-            for (SpeechRecognitionResult result : results) {
-                // There can be several alternative transcripts for a given chunk of speech. Just use the
-                // first (most likely) one here.
-                SpeechRecognitionAlternative alternative = result.getAlternativesList().get(0);
-                stttext = alternative.getTranscript();
-                System.out.printf("Transcription: %s%n", stttext);
-            }
-
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-
-        return stttext;
-    }
-
-
     //wav 파일을 구성할 byte[]로 받고 stt 결과 반환
-    public static String sttWav2(byte[] fileData) throws IOException {
-
-        GoogleCredentials credentials = GoogleCredentials.fromStream(new FileInputStream("project-sinabeulo-key-now.json"));
-
+    public static String sttWav(byte[] fileData) throws IOException {
 
         String stttext;
 
         byte[] content = fileData;
 
-        try (SpeechClient speechClient = SpeechClient.create(SpeechSettings.newBuilder()
-                .setCredentialsProvider(FixedCredentialsProvider.create(credentials))
-                .build())) {
+        try (SpeechClient speechClient = SpeechClient.create()) {
             stttext = null;
 
-            // Get the contents of the audio file
+            //request를 보낼 audio에 대해 파일 content 빌드
             RecognitionAudio audio = RecognitionAudio.newBuilder().setContent(ByteString.copyFrom(content)).build();
 
 
-//            String phrases = "바나너 버내나 버나나 본내나 바나냐";
-//            List<String> phrases = Arrays.asList(
-//                    "바나냐", "버내나", "버나나", "본내나", "바나냐"
-//            );
-
             // speechContext 단어 인식 설정
-//            SpeechContext speechContext =
-//                    SpeechContext.newBuilder().addAllPhrases(phrases).build();
-////                    SpeechContext.newBuilder().addPhrases("단어").build();
+            List<String> phrases = Arrays.asList(
+                    "너픈 아늘", "노픈 아늘", "너픈 하늘"
+            );
+            SpeechContext speechContext =
+                    SpeechContext.newBuilder().addAllPhrases(phrases).build();
 //            System.out.print(speechContext.getPhrases(2));  //speechContext 적용 확인
 
-
-            // Builds the sync recognize request
+            //RecognitionConfig 빌드, encoding/hertz/languageCode ...etc.
             RecognitionConfig config =
                     RecognitionConfig.newBuilder()
-                            //byte [] 파일로 받아오면서 encoding과 hertz 설정 안해도 success 됨
-//                            .setEncoding(RecognitionConfig.AudioEncoding.LINEAR16)
-//                            .setSampleRateHertz(48000)      //wav파일 44100 //영현이네 wav은 48000
+                            //byte [] 파일로 받아오면서 encoding과 hertz 설정 없이 진행
                             .setLanguageCode("ko-KR")
                             .build();
 
-            // Performs speech recognition on the audio file
+            // speech-to-text에 request를 세팅하고 보냄
             RecognizeResponse response = speechClient.recognize(config, audio);
-            List<SpeechRecognitionResult> results = response.getResultsList();
 
+            //response results에서 text를 받아옴
+            List<SpeechRecognitionResult> results = response.getResultsList();
             for (SpeechRecognitionResult result : results) {
-                // There can be several alternative transcripts for a given chunk of speech. Just use the
-                // first (most likely) one here.
                 SpeechRecognitionAlternative alternative = result.getAlternativesList().get(0);
                 stttext = alternative.getTranscript();
                 System.out.printf("Transcription: %s%n", stttext);
@@ -133,7 +54,7 @@ public class sttWavService {
             throw new RuntimeException(e);
         }
 
-        return stttext;
+        return stttext; //stt api return text
 
     }
 }
